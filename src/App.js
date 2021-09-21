@@ -1,23 +1,62 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Route } from 'react-router-dom';
 import './App.css';
+import { Footer, Header } from './components';
+import { Form, Field } from 'react-final-form'
+import { Grid, Paper, TextField } from '@material-ui/core';
+import { LoginPage } from './pages';
+
+const Main = () => {
+  const [state, setState] = React.useState(0);
+  const [val, setVal] = React.useState('')
+
+  return (
+    <>
+      <p>Amount of clicking: {state}</p>
+      <input type="text" onChange={(e)=>setVal(e.target.value)} value={val} />
+      <button onClick={()=>{
+        setState(prev => 1 + prev)
+        }}>ClickMe</button>
+    </>
+  )
+}
+
+
+
+
 
 function App() {
+
+  const [loadData, setLoadData] = React.useState(true);
+
+  const getResponce = () => {
+     setLoadData(true);
+     const responce = new Promise((resolve, reject)=>{
+      fetch('http://localhost:8000/')
+      .then(res=>res.json())
+      .then(res=>resolve(res))
+      .catch(err=>console.log(err))
+    });
+
+    responce.then(res=>res).catch(err=>console.log(err)).finally(()=>setLoadData(false));
+  }
+  React.useEffect(()=>{
+    setTimeout(getResponce, 5000);    
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      {
+        loadData ? <p>LOADING RESPONCE...</p> : <p>GET RESPONCE</p>
+      }
+      <Route path='/' exact component={Main} />
+      <Route path='/log-in' component={LoginPage} />
+      <Route path='/about2' component={()=><h1>ABOUT 2</h1>} />
+      <Route path='/about3' component={()=><h1>ABOUT 3</h1>} />
+      <Route path='/about4' component={()=><h1>ABOUT 4</h1>} />
+
+      <Footer />
     </div>
   );
 }
