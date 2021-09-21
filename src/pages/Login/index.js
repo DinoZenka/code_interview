@@ -12,7 +12,7 @@ const LoginPage = () => {
 
     return (
       <TabContext value={value}>
-          <AppBar position='static' color='default' style={{width: '500px', margin: '0 auto'}}>
+          <AppBar position='static' color='default' style={{width: '500px', margin: '0 auto', marginTop: '50px'}}>
             <TabList 
                 onChange={handleChange}
                 indicatorColor='primary'
@@ -23,11 +23,11 @@ const LoginPage = () => {
             </TabList>
           </AppBar>
           <TabPanel value='login' style={{paddingTop: '0', width: '500px', margin: '0 auto'}}>
-				<Login />
-			</TabPanel>
-			<TabPanel value='signup'>
-				<Signup />
-			</TabPanel>
+            <Login />
+          </TabPanel>
+          <TabPanel value='signup' style={{paddingTop: '0', width: '500px', margin: '0 auto'}}>
+            <Signup />
+          </TabPanel>
       </TabContext>
   
     )

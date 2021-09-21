@@ -2,9 +2,9 @@ import { TextField } from "@material-ui/core";
 import { Field } from "react-final-form";
 
 const MIU_RFF_input = (props) => {
-    const { name, ...rest } = props;
+    const { name, className, ...rest } = props;
     return (
-      <Field name={name} >
+      <Field name={name}>
           {({input, meta})=>(
             <TextField 
                 name={input.name} 

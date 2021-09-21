@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
         textDecoration: 'none',
         color: 'white',
         fontWeight: 'bold',
+        marginRight: '20px',
     },
     headerLogoSpan: {
         color: 'rgba(255, 99, 102, 1)',
@@ -39,10 +40,14 @@ const useStyles = makeStyles((theme) => ({
     },
     headerLogin: {
         marginLeft: 'auto',
-        padding: '15px',
-        backgroundColor: 'red',
-        borderRadius: '10px',
-        transition: '2s'
+        padding: '10px 15px',
+        backgroundColor: 'rgba(255, 99, 102, 1)',
+        borderRadius: '5px',
+        transition: '2s',
+        '&:hover':{
+            backgroundColor: 'rgba(255, 99, 102, 1)',
+            color: 'white'
+        }
     }
 }));
 
