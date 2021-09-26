@@ -1,5 +1,14 @@
-import { TextField } from "@material-ui/core";
 import { Field } from "react-final-form";
+import { withStyles } from "@material-ui/core/styles";
+import { TextField } from 'mui-rff';
+
+const styles = {
+  root: {
+    '& .MuiFormHelperText-contained': {
+      marginBottom: -10,
+    }
+  }
+}
 
 const MIU_RFF_input = (props) => {
     const { name, className, ...rest } = props;
@@ -17,4 +26,4 @@ const MIU_RFF_input = (props) => {
     )
   }
 
-  export default MIU_RFF_input;
+  export default withStyles(styles)(MIU_RFF_input);

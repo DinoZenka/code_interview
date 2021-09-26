@@ -1,14 +1,12 @@
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+  },
   formContainer: {
     textAlign: 'left', 
     padding: '30px 40px',
     marginBottom: '50px',
-  },
-  loginImage: {
-    marginRight: '10px',
-    cursor: 'pointer',
   },
   form: {
     display: 'flex', 
@@ -16,6 +14,12 @@ const useStyles = makeStyles((theme) => ({
   },
   formInput: {
     padding: '100px'
+  },
+  inputMargin: {
+  },
+  link: {
+    color: 'black',
+    textTransform: 'Capitalize'
   }
 
 }));

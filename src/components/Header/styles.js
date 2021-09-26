@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles((theme) => ({
 	header: {
-		height: '60px',
+		height: 70,
         backgroundColor: 'rgba(40, 50, 160, 1)',
 	},
     headerContainer: {
@@ -28,10 +28,12 @@ const useStyles = makeStyles((theme) => ({
     },
     headerLink: {
         textDecoration: 'none',
-        padding: '21px',
+        fontWeight: 'bold',
+        padding: 25,
         transition: '1s',
         color: 'white',
         textTransform: 'uppercase',
+        position: 'relative',
         '&:hover':{
             backgroundColor: 'rgba(40, 50, 210, 1)',
             color: 'rgba(210, 210, 210, 1)',
@@ -42,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: 'auto',
         padding: '10px 15px',
         backgroundColor: 'rgba(255, 99, 102, 1)',
-        borderRadius: '5px',
+        borderRadius: 5,
         transition: '2s',
         '&:hover':{
             backgroundColor: 'rgba(255, 99, 102, 1)',

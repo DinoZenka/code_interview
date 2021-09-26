@@ -16,6 +16,14 @@ const useStyles = makeStyles((theme) => ({
   },
   formInput: {
     padding: '100px'
+  },
+  forgetPassword: {
+    textAlign: 'right',
+    textDecoration: 'none',
+    color: 'black',
+    '&:hover':{
+      textDecoration: 'underline',
+    }
   }
 
 }));

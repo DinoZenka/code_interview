@@ -1,5 +1,5 @@
 import useStyles from './styles';
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     const styles = useStyles();

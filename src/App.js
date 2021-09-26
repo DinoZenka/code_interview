@@ -2,28 +2,16 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import { Footer, Header } from './components';
-import { Form, Field } from 'react-final-form'
-import { Grid, Paper, TextField } from '@material-ui/core';
 import { LoginPage } from './pages';
 
 const Main = () => {
-  const [state, setState] = React.useState(0);
-  const [val, setVal] = React.useState('')
-
   return (
     <>
-      <p>Amount of clicking: {state}</p>
-      <input type="text" onChange={(e)=>setVal(e.target.value)} value={val} />
-      <button onClick={()=>{
-        setState(prev => 1 + prev)
-        }}>ClickMe</button>
+      <p>Main page</p>
+      
     </>
   )
 }
-
-
-
-
 
 function App() {
 
