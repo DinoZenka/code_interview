@@ -5,6 +5,9 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'left', 
     padding: '30px 40px',
     marginBottom: '50px',
+    '@media (max-width: 600px)': {
+      padding: 20,
+    }
   },
   loginImage: {
     marginRight: '10px',
@@ -13,9 +16,6 @@ const useStyles = makeStyles((theme) => ({
   form: {
     display: 'flex', 
     flexDirection: "column"
-  },
-  formInput: {
-    padding: '100px'
   },
   forgetPassword: {
     textAlign: 'right',

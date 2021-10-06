@@ -1,4 +1,4 @@
-const validateSignupForm = (values) => {
+export const validateSignupForm = (values) => {
     const errors = {};
     if (!values.name) {
       errors.name = "Please Enter Your Name.";
@@ -21,7 +21,7 @@ const validateSignupForm = (values) => {
     } else if (!(values.password === values.confirm_password)) {
       errors.confirm_password = "Passwords do not match.";
     }
-    if(values.type === "student") {
+    if (values.type === "student") {
       if(!values.college) {
         errors.college = "Please Enter Your Colledge.";
       }
@@ -30,11 +30,24 @@ const validateSignupForm = (values) => {
         errors.company = "Please Enter Your Company."
       }
     }
-    if(!values.skills.length) {
+    if (!values.skills.length) {
       errors.skills = "Please Enter Your Skills."
     }
-  
+
     return errors;
   }
 
-export { validateSignupForm };
+export const validateLoginForm = (values) => {
+    const errors = {};
+    if(!values.email){
+      errors.email = 'Please Enter Your Name.';
+    } else if(!values.email.trim()) {
+      errors.email = 'Please Do Not Enter Only Spaces.';
+    } else if(!/\S+@\S+\.\S+/.test(values.email)) {
+      errors.email = "Please Enter Correct Email.";
+    }
+    if (!values.password) {
+      errors.password = 'Please Enter Your Password.';
+    }
+    return errors;
+  }

@@ -1,49 +1,35 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import './App.css';
 import { Footer, Header } from './components';
-import { LoginPage, TestListPage } from './pages';
+import MainPage from './pages/Main';
+import Root from './pages/Root';
 
-const Main = () => {
+import { LoginPage, TestListPage } from './pages';
+import {Box} from "@material-ui/core";
+
+const NotFound = () => {
   return (
-    <>
-      <p>Main page</p>
-      
-    </>
+    <Box style={{textAlign: 'center', height: '100%', paddingTop: 20}}>
+      <h1 >404 Page not found</h1>
+    </Box>
   )
 }
 
 function App() {
-
-  const [loadData, setLoadData] = React.useState(true);
-
-  const getResponce = () => {
-     setLoadData(true);
-     const responce = new Promise((resolve, reject)=>{
-      fetch('http://localhost:8000/')
-      .then(res=>res.json())
-      .then(res=>resolve(res))
-      .catch(err=>console.log(err))
-    });
-
-    responce.then(res=>res).catch(err=>console.log(err)).finally(()=>setLoadData(false));
-  }
-  React.useEffect(()=>{
-    setTimeout(getResponce, 5000);    
-  }, []);
-
   return (
-    <div className="App" style={{minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+    <div className="App" style={{ minHeight: '100vh' }} >
       <Header />
-        <Switch >
-          <Route path='/' exact component={Main} />
-          <Route path='/log-in' component={LoginPage} />
-          <Route path='/about2' component={()=><h1>ABOUT 2</h1>} />
-          <Route path='/about3' component={()=><h1>ABOUT 3</h1>} />
-          <Route path='/about4' component={()=><h1>ABOUT 4</h1>} />
-          <Route path='/skill-test' component={TestListPage} />
-          <Route path='/' component={()=><h1>404 Page not found</h1>} />
-        </Switch>
+        <div style={{minHeight: '68vh', backgroundColor: '#f2f2f2'}}>
+          <Switch >
+            <Route path='/' exact component={Root} />
+            <Route path='/log-in' component={LoginPage} />
+            <Route path='/skill-test' exact component={MainPage} />
+            <Route path='/skill-test/:test' component={TestListPage} />
+            <Route path='/about3' component={()=><h1>ABOUT 3</h1>} />
+            <Route path='/about4' component={()=><h1>ABOUT 4</h1>} />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
       <Footer />
     </div>
   );

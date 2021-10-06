@@ -6,9 +6,10 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: 'rgba(40, 50, 160, 1)',
 	},
     headerContainer: {
-        width: '90%',
+        maxWidth: 1300,
         height: '100%',
         padding: '0 20px',
+        width: '100%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-start',

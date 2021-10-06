@@ -46,6 +46,14 @@ const useStyles = makeStyles((theme) => ({
     title:{
       marginBottom: 10,
       color: 'white',
+      "@media (max-width: 1280px)": {
+          marginBottom: 0,
+          marginTop: 10,
+          fontSize: 17
+      },
+      "@media (max-width: 960px)": {
+        marginBottom: 5,
+    },
     }
   }));
 

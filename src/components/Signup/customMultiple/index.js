@@ -1,73 +1,186 @@
-import { Box, Typography } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
+import { Autocomplete } from '@material-ui/lab';
 import React from 'react';
-import { Field } from 'react-final-form';
+import Chip from '@material-ui/core/Chip';
 import useStyles from './style';
 
-const CustomMultiple = ({name}) => {
-    const inputRef = React.useRef();
-
-    const [focus, setFocus] = React.useState(false);
-    const [error, setError] = React.useState(false);
-    const [touched, setTouched] = React.useState(false);
-    const [submitError, setSubmitError] = React.useState(false);
-
-    const styles = useStyles({focus, error, touched, submitError});
-    const [val, setVal] = React.useState('');
+const MyChip = (props) => {
+    const [state, setState] = React.useState(false);
+    const handleClick = () => {
+      setState(prev => !prev);
+    }
     return (
-        <Field name={name}>
-            {
-                ({input, meta}) => {
-                    setError(meta.error);
-                    setSubmitError(meta.touched);
-                    return <>
-                    <Typography variant='span' component='p' className={styles.title}>
-                        Enter your skills*
-                    </Typography>
-                    <Box name={input.name} className={styles.container} onClick={(e)=>{
-                        e.stopPropagation();
-                        inputRef.current.focus();
-                    }}>
-                        <ul className={styles.listContainer}>
-                            {
-                                input?.value?.map((elem, index) => (
-                                    <li key={elem.id} className={styles.listElement} onClick={e=>e.stopPropagation()}>
-                                        <p className={styles.elementText}>{elem.title}</p>
-                                        <span className={styles.elementDelete} onClick={()=>{
-                                            input.onChange(input.value.filter(item=>item.id!==elem.id))
-                                        }}>x</span>
-                                    </li>
-                                ))
-                            }
-                            <li style={{minWidth: 120}}>
-                                <input 
-                                    className={styles.input}
-                                    type="text" 
-                                    ref={inputRef}
-                                    placeholder="Enter your skill"
-                                    value={val} 
-                                    onFocus={()=>(setFocus(true))}
-                                    onBlur={()=>(setFocus(false), setTouched(true))}
-                                    onChange={(e)=>setVal(e.target.value)} 
-                                    onKeyPress={e=>{
-                                        if(e.key === "Enter"){
-                                            e.preventDefault();
-                                            if(val===''){
-                                                return
-                                            } else {
-                                                input.onChange([...input.value, {title:val, id:new Date().getTime()}]);
-                                                setVal('')
-                                            }
-                                        }
-                                    }}
-                            />
-                            </li>
-                        </ul>
-                    </Box>
-                    {meta.error && (touched || submitError) && <p className={styles.error}>{meta.error}</p>}
-                    </>
-                }
-            }
-        </Field>
+        <Chip
+          style={{border: state?'1px solid grey': ''}}
+          onClick={handleClick}
+          {...props}
+        />
+    );
+  };
+
+const technologies = [
+    { label: 'C'},
+    { label: 'c language'},
+    { label: 'c developer'},
+    { label: 'c program'},
+    { label: 'c programming'},
+    { label: "JS"},
+    { label: 'ReactJS'},
+    { label: 'NodeJS'},
+    { label: 'Testing'},
+    { label: 'AngularJS'},
+    { label: 'VueJS' },
+    { label: 'HTML' },
+    { label: 'CSS' },
+    { label: 'Bootstrap' },
+    { label: 'Bootstrap 5' },
+    { label: 'Haxe' },
+    { label: "Java" },
+    { label: 'JVM' },
+    { label: 'JRE' },
+    { label: 'Juputer' },
+    { label: 'Python' },
+    { label: 'Pandas' },
+    { label: 'Redux' },
+    { label: 'Redux-thunk' },
+    { label: "Redux saga" },
+    { label: 'Tailwind' },
+    { label: 'React Native' },
+    { label: 'React' },
+    { label: 'Angular' },
+    { label: 'XML' },
+    { label: 'WebRTC' },
+    { label: 'JSON' },
+    { label: 'C++' },
+    { label: 'Qt' },
+    { label: 'VsCode' },
+    { label: 'WebStorm' },
+    { label: 'Intellij Idea' },
+    { label: 'Blockchain' },
+    { label: 'Web Sockets' },
+    { label: 'ffmpeg' },
+    { label: 'VR' },
+    { label: 'B2B' },
+    { label: 'B2C' },
+    { label: 'C2B' },
+    { label: 'UML' },
+    { label: 'Software' },
+    { label: 'Developer' },
+    { label: 'Designer' },
+    { label: 'Figma' },
+    { label: 'Photoshop' },
+    { label: 'Ant Design' },
+    { label: 'ES5' },
+    { label: 'ES6' },
+    { label: 'ES7' },
+    { label: 'Java Core' },
+    { label: 'Threads' },
+    { label: 'C++98' },
+    { label: 'C++03' },
+    { label: 'C++17' },
+    { label: 'Django' },
+    { label: 'Spring' },
+    { label: 'GUI' },
+    { label: 'Software Designer' },
+    { label: 'XCode' },
+    { label: 'Xamarin' },
+    { label: 'Android developer' },
+    { label: 'Android' },
+    { label: 'IOS' },
+    { label: 'IOS Developer' },
+    { label: 'Apple' },
+    { label: 'XML' },
+    { label: 'SQL' },
+    { label: 'MySQL' },
+    { label: 'Postgress' },
+    { label: 'NoSQL' },
+    { label: 'ORM' },
+    { label: 'MongoDB' },
+    { label: 'Firebase' },
+    { label: 'Microservice' },
+    { label: 'Monolith' },
+    { label: 'Web API' },
+    { label: 'ECMA Script' },
+    { label: 'Eclips' },
+    { label: 'Excel' },
+    { label: 'Data Science' },
+    { label: 'HR' },
+    { label: 'Integration' },
+    { label: 'Laravel' },
+    { label: 'PHP' },
+    { label: 'Yii2' },
+    { label: 'Yii3' },
+    { label: 'Haskell' },
+    { label: 'ELM' },
+    { label: "JQuery" },
+    { label: 'JDBC' },
+    { label: 'Heroku' },
+    { label: 'Visual Basic' },
+    { label: 'TypeScript' },
+    { label: 'Web 2.0' },
+    { label: 'Web Design' },
+  ];
+  
+
+const CustomMultiple = ({input, meta, ...props}) => {
+    const styles = useStyles();
+
+    return (
+        <>
+            <Autocomplete
+                { ...input}
+                multiple
+                id="tags-outlined"
+                options={technologies}
+                getOptionLabel={(option) => option.label}
+                defaultValue={[technologies[5]]}
+                filterSelectedOptions
+                value={input.value}
+                {...props}
+                onChange={(e, newval, reason) => {
+                    input.onChange(newval);
+                }}
+                noOptionsText="Press Enter to add"
+                classes={{
+                    tag: styles.tag
+                }}
+                onBlur={(e) => {
+                    if (e.target.value && e.target.value.trim() !== '') {
+                        input.onChange(input.value.concat({label: e.target.value}));
+                    }
+                    input.onBlur(e);
+                }}
+                getOptionSelected={(option, value) => {
+                    return option.label === value.label
+                }}
+                renderInput={(params) => (
+                <TextField
+                    {...params}
+                    variant="outlined"
+                    label="Enter your skills*"
+                    placeholder="Favorites"
+                    error={meta.touched && (!!meta.error)}
+                    onKeyDown={( e ) => {
+                        if (e.code === 'Enter' && e.target.value && e.target.value.trim() !== '') {
+                            console.log(e.target.value);
+                            e.preventDefault();
+                            input.onChange(input.value.concat({label: e.target.value}));
+                        }
+                    }}
+                />
+                )}
+                renderTags={(tagValue, getTagProps) => {
+                    return tagValue.map((option, index) => (
+                        <MyChip {...getTagProps({ index })} label={option.label} />
+                    ));
+                }}
+            />
+            { meta.touched && meta.error && <span style={{
+                color: '#f44336',
+                margin: '-15px 14px 15px 14px',
+                fontSize: '0.8rem'
+            }}>{meta.error}</span>}
+        </>
     )
 }
 

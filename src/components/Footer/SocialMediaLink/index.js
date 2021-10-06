@@ -5,7 +5,7 @@ const SocialMedia = ({link, ...rest}) => {
     const styles = useStyles();
 
     return (
-        <a href={link} className={styles.socialContainer}>
+        <a href={link} target="_blank" className={styles.socialContainer}>
             <FontAwesomeIcon {...rest} />
         </a>
     )

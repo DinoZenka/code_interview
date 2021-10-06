@@ -11,6 +11,14 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        "@media (max-width: 1280px)": {
+            backgroundColor: 'transparent',
+            width: 20,
+            height: 20,
+            '& svg': {
+                color: 'white',
+            }
+        },
     }
 }));
 

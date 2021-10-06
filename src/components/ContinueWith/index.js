@@ -1,4 +1,4 @@
-import { IconFB, IconGitHub, IconLinkedIn, IconGoogle } from "../../assets/"
+import { IconFB, IconGitHub, IconLinkedIn, IconGoogle } from "../../assets"
 import useStyles from "./style.js"
 
 const ContinueWith = () => {

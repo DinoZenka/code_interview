@@ -5,7 +5,7 @@ import { TextField } from 'mui-rff';
 const styles = {
   root: {
     '& .MuiFormHelperText-contained': {
-      marginBottom: -10,
+      marginBottom: -7,
     }
   }
 }
